@@ -1,6 +1,6 @@
 <template>
-  <div class="task" :class="stateClass">
-    <span @click="$emit('taskDeleted', task)" class="close">x</span>
+  <div @click="$emit('taskStateChanged', task)" class="task" :class="stateClass">
+    <span @click.stop="$emit('taskDeleted', task)" class="close">x</span>
     <p>{{ task.name }}</p>
   </div>
 </template>
@@ -51,11 +51,11 @@ export default {
 }
 
 .pending .close {
-  background-color: #B73229;
+  background-color: #b73229;
 }
 
 .done .close {
-  background-color: #0A8F08;
+  background-color: #0a8f08;
 }
 
 .close {
